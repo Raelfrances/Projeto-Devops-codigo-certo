@@ -11,11 +11,11 @@ project-root/
 │   │   └── cd.yml
 │
 ├── src/
-│   ├── app/ (ou a estrutura da aplicação escolhida)
-│
+│   ├── app.py (ou a estrutura da aplicação escolhida)
+|   ├── Front.Html   
 ├── tests/
 │   ├── test_app.py (ou a estrutura de testes apropriada)
 │
 ├── Dockerfile
 ├── README.md
-└── L
+└── 
