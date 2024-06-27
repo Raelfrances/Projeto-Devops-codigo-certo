@@ -2,7 +2,7 @@
 Repositóro tem como objetivo principal introduzir e praticar conceitos fundamentais de DevOps Jr através da implementação de um pipeline de CI/CD para uma aplicação web simples.
 
 ### Criando uma aplicação web simples
-Utilizando Python criei uma aplicação web que retorna uma mensagem simples:
+Utilizando Python criei uma aplicação web que retorna uma mensagem simples com o arquivo app.py:
 ```plaintext
 |from wsgiref.simple_server import make_server # Essa função é importada para criar um servidor HTTP simples para executar aplicações web compatíveis com o WSGI.
 
@@ -39,7 +39,7 @@ with make_server('', 8000, application) as httpd:
 |
 | EXPOSE 5000
 |
-| CMD ["python", "main.py"]
+| CMD ["python", "app.py"]
 
 ```
 
