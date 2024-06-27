@@ -1,0 +1,20 @@
+def application(environ, start_response):
+  # Get requested path
+  path = environ['PATH_INFO']
+
+  # Set headers
+  headers = [('Content-Type', 'text/html')]
+
+  # Define response based on path
+  if path == '/':
+      # Render content for root path
+      start_response('200 OK', headers)
+      return [b"<h1>Ola, este e meu projeto codigo certo!</h1>"]
+  else:
+      # Handle other paths (404 Not Found)
+      start_response('404 Not Found', headers)
+      return [b"<h1>Not Found</h1>"]
+
+with make_server('', 8000, application) as httpd:
+  print("Serving on port 8000...")
+  httpd.serve_forever()
