@@ -42,6 +42,20 @@ with make_server('', 8000, application) as httpd:
 | CMD ["python", "app.py"]
 
 ```
+### Criando e executando uma imagem de docker
+```plaintext
+Com os arquivos app.py e Dockerfile criados uitlizei a platadorma Killercoda: https://killercoda.com/playgrounds/scenario/ubuntu.
+Foi criado um cenário ubunto no qual digitei os segintes comandos no terminal:
+
+-  docker build -t python-test .
+   comando utilizado para criar a imagem, a opção '-t' permite que você defina o nome de sua imagem. nosse caso,escolhi 'python-test', mas você pode usar o nome que preferir.
+
+- docker run python-test
+  Comando utilizado para executar a imagem do contêiner
+
+```
+
+
 
    #### Estrutura do Projeto:
 ```plaintext
