@@ -28,7 +28,7 @@ with make_server('', 8000, application) as httpd:
 
 
 ```
-### Aplicação para testar aplicação web app.py:
+### Aplicação para testar app.py:
 teste_app.py
 ```plaintext
 import unittest  # para criar testes unitários.
