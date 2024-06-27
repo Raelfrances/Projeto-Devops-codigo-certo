@@ -9,7 +9,7 @@ def application(environ, start_response):
 
     if path == '/':
         start_response('200 OK', headers)
-        return [b'<h1>Hello, World!</h1>']
+        return [b'<h1>Ola, este e meu  projeto devops codigo certo!!</h1>']
     else:
         start_response('404 Not Found', headers)
         return [b'<h1>Not Found</h1>']
@@ -24,7 +24,7 @@ class TestApp(unittest.TestCase):
         application(environ, self.capture_buffer.write)
         self.capture_buffer.seek(0)
         response_html = self.capture_buffer.read()
-        self.assertEqual(response_html, '<h1>ola!</h1>')
+        self.assertEqual(response_html, '<h1>Ola, este e meu  projeto devops codigo certo!!</h1>')
 
     def tearDown(self):
         pass
