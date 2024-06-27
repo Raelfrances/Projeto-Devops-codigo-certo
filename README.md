@@ -28,6 +28,44 @@ with make_server('', 8000, application) as httpd:
 
 
 ```
+### Aplicação para testar aplicação web app.py:
+teste_app.py
+```plaintext
+import unittest  # para criar testes unitários.
+from wsgiref.simple_server import make_server # Para simular servidor http
+import io # Para capturar saida do servidor da aplicação
+
+def application(environ, start_response):
+    # Simular comportamento da aplicação
+    path = environ['PATH_INFO']
+    headers = [('Content-Type', 'text/html')]
+
+    if path == '/':
+        start_response('200 OK', headers)
+        return [b'<h1>Ola, este e meu  projeto devops codigo certo!</h1>']
+    else:
+        start_response('404 Not Found', headers)
+        return [b'<h1>Not Found</h1>']
+
+class TestApp(unittest.TestCase):
+
+    def setUp(self):
+        self.capture_buffer = io.StringIO()
+
+    def test_application(self):
+        environ = {'PATH_INFO': '/'}
+        application(environ, self.capture_buffer.write)
+        self.capture_buffer.seek(0)
+        response_html = self.capture_buffer.read()
+        self.assertEqual(response_html, '<h1>Ola, este e meu  projeto devops codigo certo!</h1>')
+
+    def tearDown(self):
+        pass
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
 ### Definindo um Dockerfile para a containerização:
 ```plaintext
 | FROM python:3.10
