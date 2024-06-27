@@ -28,7 +28,20 @@ with make_server('', 8000, application) as httpd:
 
 
 ```
+### Definindo um Dockerfile para a containerização:
+```plaintext
+| FROM python:3.10
+|
+|  WORKDIR main
+|
+|
+| COPY . .
+|
+| EXPOSE 5000
+|
+| CMD ["python", "main.py"]
 
+```
 
    #### Estrutura do Projeto:
 ```plaintext
