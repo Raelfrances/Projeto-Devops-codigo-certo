@@ -93,7 +93,98 @@ Foi criado um cenário ubunto no qual digitei os segintes comandos no terminal:
 
 ```
 
+### Implementando um pipeline de CI.yml usando GitHub Actions.
+``` plaintext
 
+on:
+    push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+
+jobs:
+  Ci:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run:  |
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+     
+      - name: Executar testes unitários
+        run: python tests.py
+        uses: actions/download-artifact@v
+
+      - name: run install, build and test
+         run: |
+           npm install
+           npm run build
+           npm run test
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+
+
+
+```
+### Implementando um pipeline de CD.yml usando GitHub Actions.
+```plaintext
+name: CD
+
+on:
+    push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+
+jobs:
+  Ci:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run:  |
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+     
+      - name: Executar testes unitários
+        run: python tests.py
+        uses: actions/download-artifact@v
+
+      - name: run install, build and test
+         run: |
+           npm install
+           npm run build
+           npm run test
+         
+          
+```
 
    #### Estrutura do Projeto:
 ```plaintext
